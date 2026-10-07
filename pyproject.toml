@@ -1,0 +1,128 @@
+[build-system]
+requires = ["setuptools>=75.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "proofrag-ai"
+version = "0.1.1"
+description = "Evidence-backed RAG with verified citations and refusal on insufficient evidence."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.10,<3.14"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Mainak Sen" }
+]
+keywords = [
+    "rag",
+    "retrieval-augmented-generation",
+    "llm",
+    "citations",
+    "grounded-ai",
+    "knowledge-base",
+    "okf",
+    "chroma",
+    "langchain",
+    "generative-ai"
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+dependencies = [
+    "pydantic>=2.9,<3.0",
+    "pydantic-settings>=2.6,<3.0",
+    "python-dotenv>=1.0,<2.0",
+
+    "PyYAML>=6.0,<7.0",
+
+    "pymupdf>=1.24,<2.0",
+
+    "langchain>=0.3,<2.0",
+    "langchain-community>=0.3,<1.0",
+    "langchain-core>=0.3,<2.0",
+    "langchain-chroma>=0.2,<1.0",
+    "langchain-huggingface>=0.1,<1.0",
+
+    "chromadb>=0.5,<2.0",
+    "sentence-transformers>=3.0,<6.0",
+
+    "groq>=0.13,<1.0",
+    "langchain-groq>=0.2,<1.0",
+
+    "fastapi>=0.115,<1.0",
+    "uvicorn[standard]>=0.32,<1.0",
+
+    "typer>=0.15,<1.0",
+    "rich>=13.9,<15.0",
+
+    "streamlit>=1.40,<2.0",
+    "nltk>=3.9,<4.0"
+]
+
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.3,<9.0",
+    "pytest-cov>=6.0,<8.0",
+    "httpx>=0.27,<1.0",
+    "ruff>=0.8,<1.0",
+    "build>=1.2,<2.0",
+    "twine>=6.0,<7.0"
+]
+
+
+[project.scripts]
+proofrag = "proofrag.cli:app"
+
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"
+
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = [
+    "E",
+    "F",
+    "I",
+    "B",
+    "UP"
+]
+
+
+[tool.coverage.run]
+source = ["proofrag"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:"
+]
+
+
+[build]
+target = "proofrag"

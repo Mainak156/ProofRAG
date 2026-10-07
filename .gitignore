@@ -1,0 +1,92 @@
+# ============================================================
+# ProofRAG - Git Ignore
+# ============================================================
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.proofrag/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Type checking / linters
+.mypy_cache/
+.pyre/
+.ruff_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# ============================================================
+# ProofRAG generated data
+# ============================================================
+
+# Chroma persistent vector database
+data/chroma/
+
+# Generated OKF bundle
+data/okf/
+
+# Local documents — don't commit potentially private documents
+data/documents/*
+
+# Keep the directory itself
+!data/documents/.gitkeep
+
+# Local logs
+*.log
+logs/
+
+# ============================================================
+# IDE / Editor
+# ============================================================
+
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# ============================================================
+# Temporary files
+# ============================================================
+
+*.tmp
+*.temp
+*.bak
+*.cache
+
+# OS / tooling
+*.pid
